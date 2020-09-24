@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Описание</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <div class="uk-container uk-margin-large-top">
+        <h1 class="uk-article-title">Ссылки</h1>
+        <p class="uk-text-lead uk-margin-small-bottom"><a class="uk-link-reset" href="/admin/">Админка</a></p>
+        <p class="uk-article-meta uk-margin-small">Стандартная админка Django</p>
+        <p class="uk-text-lead uk-margin-small-bottom"><a class="uk-link-reset" href="{% url 'application' %}">Заявки</a></p>
+        <p class="uk-article-meta uk-margin-small">Поддерживаются методы GET и POST. GET возвращает все заявки (без пагинации). POST загружает новые заявки в формате: {"iin": 900909123456, "amount": 100000 }</p>
+    </div>
+</body>
+</html>

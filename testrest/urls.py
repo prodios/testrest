@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from loanapps.views import ApplicationAPIView
+from loanapps.views import ApplicationAPIView, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', ApplicationAPIView.as_view(), name="application"),
+    path('application/', ApplicationAPIView.as_view(), name="application"),
+    path('', index, name='index'),
 ]

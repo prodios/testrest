@@ -2,12 +2,17 @@ from datetime import date, datetime
 
 import requests
 from dateutil.relativedelta import relativedelta
+from django.shortcuts import render
 from rest_framework import status, renderers
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 
 from loanapps.models import Application, Program, BlackList, Borrower
 from loanapps.serializers import ApplicationSerializer
+
+
+def index(request):
+    return render(request, 'loanapps/index.html')
 
 
 class ProgramValidator:
