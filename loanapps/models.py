@@ -40,7 +40,7 @@ class Application(models.Model):
     rejection_reason = models.TextField(default='', blank=True)
 
     def __str__(self):
-        return f'{self.borrower} {self.program}'
+        return f'{self.borrower} - {self.amount} - {self.get_status_display()}'
 
     class Meta:
         db_table = 'applications'
