@@ -2,7 +2,7 @@ from datetime import date, datetime
 
 import requests
 from dateutil.relativedelta import relativedelta
-from rest_framework import status
+from rest_framework import status, renderers
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 
@@ -84,8 +84,13 @@ class ApplicationAPIView(GenericAPIView):
     authentication_classes = ()
     permission_classes = ()
     serializer_class = ApplicationSerializer
+    renderer_classes = [renderers.JSONRenderer]
 
-    def post(self, request, *args, **kwargs):
+    def get(self, request):
+        serializer = self.get_serializer(Application.objects.all(), many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
         data = request.data
         iin = data.pop('iin')
         if iin.isdigit() and len(iin) == 12:
@@ -119,8 +124,13 @@ class ApplicationAPIView(GenericAPIView):
 #     authentication_classes = ()
 #     permission_classes = ()
 #     serializer_class = ApplicationSerializer
+#     renderer_classes = [renderers.JSONRenderer]
 #
-#     def post(self, request, *args, **kwargs):
+#     def get(self, request):
+#         serializer = self.get_serializer(Application.objects.all(), many=True)
+#         return Response(serializer.data)
+#
+#     def post(self, request):
 #         serializer = self.get_serializer(data=request.data)
 #         if serializer.is_valid():
 #             serializer.save()
